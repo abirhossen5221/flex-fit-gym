@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainer Profile — Flex Fit Gym Khulna</title>
+  <meta name="description" content="View detailed trainer profile at Flex Fit Gym Khulna.">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:40px;height:40px;filter:invert(1);">
+        <span>FLEX</span><span class="logo-text-red">FIT</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="trainers.html" class="active">Trainers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="workout-plan.html">Workout</a>
+        <a href="food-plan.html">Food Plan</a>
+        <a href="membership.html" class="nav-cta btn btn-primary btn-sm">Join Now</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="page-header" style="padding-bottom:40px;">
+    <div class="container">
+      <a href="trainers.html" style="color:var(--red-accent);font-size:0.9rem;">← Back to All Trainers</a>
+    </div>
+  </div>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="profile-hero reveal" id="profileContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:36px;height:36px;filter:invert(1);">
+            <span>FLEX</span><span class="logo-text-red">FIT</span>
+          </a>
+          <p>The most premium gym experience in Khulna.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="shop.html">Shop</a></li></ul></div>
+        <div><h4>Programs</h4><ul><li><a href="workout-plan.html">Workout Plan</a></li><li><a href="food-plan.html">Food Plan</a></li><li><a href="membership.html">Membership</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Khulna, Bangladesh</li><li>📞 +880 1XXX-XXXXXX</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Flex Fit Gym Khulna. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/trainers-data.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const trainerId = parseInt(params.get('id'));
+    const trainer = trainersData.find(t => t.id === trainerId);
+
+    if (!trainer) {
+      document.getElementById('profileContent').innerHTML = `
+        <div style="text-align:center;padding:60px;">
+          <h2 style="font-family:var(--font-display);font-size:2rem;margin-bottom:12px;">Trainer Not Found</h2>
+          <p style="color:var(--text-secondary);margin-bottom:20px;">The trainer you're looking for doesn't exist.</p>
+          <a href="trainers.html" class="btn btn-primary">View All Trainers</a>
+        </div>
+      `;
+    } else {
+      document.title = `${trainer.name} — Flex Fit Gym Khulna`;
+      document.getElementById('profileContent').innerHTML = `
+        <div class="profile-img-wrap">
+          <img src="${trainer.image}" alt="${trainer.name}">
+        </div>
+        <div class="profile-info">
+          <h1>${trainer.name}</h1>
+          <div class="profile-specialty">${trainer.specialty}</div>
+          <div class="profile-rate">Hiring Rate: <span>৳${trainer.rate}/month</span></div>
+          <p class="profile-bio">${trainer.bio}</p>
+          
+          <div class="profile-social">
+            <a href="tel:${trainer.phone}" title="Phone">📞</a>
+            <a href="https://wa.me/${trainer.whatsapp}" target="_blank" title="WhatsApp">💬</a>
+            <a href="${trainer.instagram}" target="_blank" title="Instagram">📸</a>
+            <a href="${trainer.facebook}" target="_blank" title="Facebook">📘</a>
+          </div>
+
+          <div style="margin-bottom:28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.5rem;letter-spacing:1px;margin-bottom:12px;">Experience: ${trainer.experience}</h3>
+          </div>
+
+          <div style="margin-bottom:28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:12px;color:var(--red-accent);">Certifications</h3>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              ${trainer.certifications.map(c => `<li style="display:flex;align-items:center;gap:8px;color:var(--text-secondary);"><span style="color:var(--red-accent);font-weight:700;">✓</span> ${c}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div style="margin-bottom:28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:12px;color:var(--red-accent);">Achievements</h3>
+            <ul style="display:flex;flex-direction:column;gap:8px;">
+              ${trainer.achievements.map(a => `<li style="display:flex;align-items:center;gap:8px;color:var(--text-secondary);"><span style="color:var(--red-accent);">🏆</span> ${a}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="tel:${trainer.phone}" class="btn btn-primary">📞 Call Now</a>
+            <a href="https://wa.me/${trainer.whatsapp}" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

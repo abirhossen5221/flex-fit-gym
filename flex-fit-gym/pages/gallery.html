@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Flex Fit Gym Khulna</title>
+  <meta name="description" content="Explore the Flex Fit Gym Khulna facility. Photos of our gym floor, training areas, equipment, and community events.">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:40px;height:40px;filter:invert(1);">
+        <span>FLEX</span><span class="logo-text-red">FIT</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="workout-plan.html">Workout</a>
+        <a href="food-plan.html">Food Plan</a>
+        <a href="membership.html" class="nav-cta btn btn-primary btn-sm">Join Now</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Inside Flex Fit</span>
+      <h1 class="section-title">OUR <span>GALLERY</span></h1>
+      <p class="section-subtitle" style="margin:0 auto;">Take a visual tour of Khulna's most premium gym facility. Our equipment, atmosphere, and community — all captured.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <!-- Category Tabs -->
+      <div class="tab-nav reveal">
+        <button class="tab-btn active" data-filter="all" onclick="filterGallery('all', this)">All</button>
+        <button class="tab-btn" data-filter="gym" onclick="filterGallery('gym', this)">Gym Floor</button>
+        <button class="tab-btn" data-filter="training" onclick="filterGallery('training', this)">Training</button>
+        <button class="tab-btn" data-filter="equipment" onclick="filterGallery('equipment', this)">Equipment</button>
+        <button class="tab-btn" data-filter="community" onclick="filterGallery('community', this)">Community</button>
+      </div>
+
+      <div class="gallery-grid reveal" id="galleryGrid">
+        <!-- Gym Floor -->
+        <div class="gallery-item" data-category="gym"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Gym main floor"></div>
+        <div class="gallery-item" data-category="training"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Personal training"></div>
+        <div class="gallery-item" data-category="equipment"><img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&q=80" alt="Dumbbells rack"></div>
+        <div class="gallery-item" data-category="gym"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80" alt="Weight room"></div>
+        <div class="gallery-item" data-category="training"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="Muscle training"></div>
+        <div class="gallery-item" data-category="community"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" alt="Community workout"></div>
+        <div class="gallery-item" data-category="equipment"><img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=600&q=80" alt="Cable machine"></div>
+        <div class="gallery-item" data-category="gym"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="Cardio area"></div>
+        <div class="gallery-item" data-category="training"><img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="Intense workout"></div>
+        <div class="gallery-item" data-category="community"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80" alt="Group class"></div>
+        <div class="gallery-item" data-category="equipment"><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="Barbell setup"></div>
+        <div class="gallery-item" data-category="gym"><img src="https://images.unsplash.com/photo-1570829460005-c840387bb1ca?w=600&q=80" alt="Gym interior"></div>
+        <div class="gallery-item" data-category="training"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="Posing"></div>
+        <div class="gallery-item" data-category="equipment"><img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=600&q=80" alt="Weight plates"></div>
+        <div class="gallery-item" data-category="community"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Yoga session"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;align-items:center;justify-content:center;cursor:pointer;" onclick="this.style.display='none'">
+    <img id="lightboxImg" src="" alt="" style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 0 60px rgba(220,20,60,0.3);">
+    <div style="position:absolute;top:24px;right:24px;color:white;font-size:2rem;cursor:pointer;">✕</div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:36px;height:36px;filter:invert(1);">
+            <span>FLEX</span><span class="logo-text-red">FIT</span>
+          </a>
+          <p>The most premium gym experience in Khulna.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="shop.html">Shop</a></li></ul></div>
+        <div><h4>Programs</h4><ul><li><a href="workout-plan.html">Workout Plan</a></li><li><a href="food-plan.html">Food Plan</a></li><li><a href="membership.html">Membership</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Khulna, Bangladesh</li><li>📞 +880 1XXX-XXXXXX</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Flex Fit Gym Khulna. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function filterGallery(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Lightbox
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightbox').style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>
