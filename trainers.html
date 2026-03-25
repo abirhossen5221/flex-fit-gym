@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Trainers — Flex Fit Gym Khulna</title>
+  <meta name="description" content="Meet the expert personal trainers at Flex Fit Gym Khulna. Certified professionals ready to help you achieve your fitness goals.">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:40px;height:40px;filter:invert(1);">
+        <span>FLEX</span><span class="logo-text-red">FIT</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="trainers.html" class="active">Trainers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="workout-plan.html">Workout</a>
+        <a href="food-plan.html">Food Plan</a>
+        <a href="membership.html" class="nav-cta btn btn-primary btn-sm">Join Now</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Expert Team</span>
+      <h1 class="section-title">OUR <span>TRAINERS</span></h1>
+      <p class="section-subtitle" style="margin:0 auto;">Certified professionals dedicated to transforming your fitness journey. Click on any trainer to view their full profile.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="trainer-grid stagger-children" id="trainerGrid">
+        <!-- Trainers rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:36px;height:36px;filter:invert(1);">
+            <span>FLEX</span><span class="logo-text-red">FIT</span>
+          </a>
+          <p>The most premium gym experience in Khulna.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank">📘</a><a href="https://instagram.com" target="_blank">📸</a><a href="https://youtube.com" target="_blank">▶️</a><a href="https://wa.me/" target="_blank">💬</a>
+          </div>
+        </div>
+        <div><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="shop.html">Shop</a></li></ul></div>
+        <div><h4>Programs</h4><ul><li><a href="workout-plan.html">Workout Plan</a></li><li><a href="food-plan.html">Food Plan</a></li><li><a href="membership.html">Membership</a></li><li><a href="book-tour.html">Book a Tour</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Khulna, Bangladesh</li><li>📞 +880 1XXX-XXXXXX</li><li>✉️ info@flexfitkhulna.com</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Flex Fit Gym Khulna. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/trainers-data.js"></script>
+  <script>
+    const grid = document.getElementById('trainerGrid');
+    trainersData.forEach(t => {
+      grid.innerHTML += `
+        <a href="trainer-profile.html?id=${t.id}" class="trainer-card">
+          <img src="${t.image}" alt="${t.name}" class="trainer-card-img">
+          <div class="trainer-card-body">
+            <div class="trainer-card-name">${t.name}</div>
+            <div class="trainer-card-specialty">${t.specialty}</div>
+            <div class="trainer-card-rate">Rate: <strong>৳${t.rate}/month</strong></div>
+            <span class="btn btn-ghost btn-sm" style="width:100%;">View Profile →</span>
+          </div>
+        </a>
+      `;
+    });
+  </script>
+</body>
+</html>

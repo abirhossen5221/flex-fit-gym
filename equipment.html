@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment & Machines — Flex Fit Gym Khulna</title>
+  <meta name="description" content="Explore the premium equipment and machines available at Flex Fit Gym Khulna. World-class gear for every workout.">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:40px;height:40px;filter:invert(1);">
+        <span>FLEX</span><span class="logo-text-red">FIT</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="equipment.html" class="active">Equipment</a>
+        <a href="workout-plan.html">Workout</a>
+        <a href="food-plan.html">Food Plan</a>
+        <a href="membership.html" class="nav-cta btn btn-primary btn-sm">Join Now</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">World-Class Facility</span>
+      <h1 class="section-title">OUR <span>EQUIPMENT</span></h1>
+      <p class="section-subtitle" style="margin:0 auto;">50+ premium machines and free weights imported from top fitness brands. Everything you need for the perfect workout.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="tab-nav reveal">
+        <button class="tab-btn active" data-filter="all" onclick="filterEquip('all', this)">All</button>
+        <button class="tab-btn" data-filter="strength" onclick="filterEquip('strength', this)">Strength</button>
+        <button class="tab-btn" data-filter="cardio" onclick="filterEquip('cardio', this)">Cardio</button>
+        <button class="tab-btn" data-filter="free" onclick="filterEquip('free', this)">Free Weights</button>
+        <button class="tab-btn" data-filter="functional" onclick="filterEquip('functional', this)">Functional</button>
+      </div>
+
+      <div class="equipment-grid stagger-children" id="equipGrid">
+        <!-- Strength -->
+        <div class="equipment-card" data-category="strength">
+          <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=500&q=80" alt="Lat Pulldown" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Lat Pulldown Machine</div>
+            <div class="equipment-card-desc">Heavy-duty cable lat pulldown for back development. Adjustable weight stack up to 120kg.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="strength">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80" alt="Leg Press" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">45° Leg Press</div>
+            <div class="equipment-card-desc">Plate-loaded leg press for quadriceps, glutes, and hamstring training. 500kg max load capacity.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="strength">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80" alt="Smith Machine" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Smith Machine</div>
+            <div class="equipment-card-desc">Guided barbell system for safe pressing, squatting, and rowing movements with built-in safety stops.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="strength">
+          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&q=80" alt="Cable Crossover" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Cable Crossover Station</div>
+            <div class="equipment-card-desc">Dual adjustable pulley system for chest flies, cable curls, tricep pushdowns, and more.</div>
+          </div>
+        </div>
+
+        <!-- Cardio -->
+        <div class="equipment-card" data-category="cardio">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80" alt="Treadmill" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Commercial Treadmill</div>
+            <div class="equipment-card-desc">Professional treadmill with incline control, heart rate monitor, and pre-programmed workouts.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="cardio">
+          <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=500&q=80" alt="Exercise Bike" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Spin Bike Pro</div>
+            <div class="equipment-card-desc">Commercial-grade spin bikes with adjustable resistance and digital display for cardio sessions.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="cardio">
+          <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=500&q=80" alt="Elliptical" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Elliptical Trainer</div>
+            <div class="equipment-card-desc">Low-impact cardio machine for full-body workout with adjustable stride and resistance levels.</div>
+          </div>
+        </div>
+
+        <!-- Free Weights -->
+        <div class="equipment-card" data-category="free">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=500&q=80" alt="Dumbbells" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Dumbbell Rack (2-50kg)</div>
+            <div class="equipment-card-desc">Full set of rubber hex dumbbells from 2kg to 50kg. Commercial-grade with anti-roll design.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="free">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=80" alt="Olympic Bar" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Olympic Barbell Set</div>
+            <div class="equipment-card-desc">20kg Olympic barbell with calibrated weight plates. Multiple sets available for deadlifts, squats, and bench.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="free">
+          <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80" alt="Kettlebells" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Kettlebell Collection</div>
+            <div class="equipment-card-desc">Competition-grade kettlebells from 8kg to 40kg for swings, cleans, and snatches.</div>
+          </div>
+        </div>
+
+        <!-- Functional -->
+        <div class="equipment-card" data-category="functional">
+          <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=500&q=80" alt="Battle Ropes" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">Battle Ropes Station</div>
+            <div class="equipment-card-desc">Heavy-duty battle ropes for high-intensity conditioning, grip strength, and endurance training.</div>
+          </div>
+        </div>
+        <div class="equipment-card" data-category="functional">
+          <img src="https://images.unsplash.com/photo-1570829460005-c840387bb1ca?w=500&q=80" alt="TRX" class="equipment-card-img">
+          <div class="equipment-card-body">
+            <div class="equipment-card-name">TRX Suspension Trainers</div>
+            <div class="equipment-card-desc">Suspension training system for bodyweight exercises targeting core stability and total-body strength.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:60px;" class="reveal">
+        <p style="color:var(--text-secondary);margin-bottom:16px;">Want to see everything in person?</p>
+        <a href="book-tour.html" class="btn btn-primary">📅 Book a Free Tour</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:36px;height:36px;filter:invert(1);">
+            <span>FLEX</span><span class="logo-text-red">FIT</span>
+          </a>
+          <p>The most premium gym experience in Khulna.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="shop.html">Shop</a></li></ul></div>
+        <div><h4>Programs</h4><ul><li><a href="workout-plan.html">Workout Plan</a></li><li><a href="food-plan.html">Food Plan</a></li><li><a href="membership.html">Membership</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Khulna, Bangladesh</li><li>📞 +880 1XXX-XXXXXX</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Flex Fit Gym Khulna. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function filterEquip(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.equipment-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = '';
+          setTimeout(() => card.style.opacity = '1', 10);
+        } else {
+          card.style.opacity = '0';
+          setTimeout(() => card.style.display = 'none', 300);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

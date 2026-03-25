@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Workout Plan — Flex Fit Gym Khulna</title>
+  <meta name="description" content="Get a personalized workout plan based on your body metrics and goals. Free 3-day sample available!">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:40px;height:40px;filter:invert(1);">
+        <span>FLEX</span><span class="logo-text-red">FIT</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="workout-plan.html" class="active">Workout</a>
+        <a href="food-plan.html">Food Plan</a>
+        <a href="membership.html" class="nav-cta btn btn-primary btn-sm">Join Now</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">AI-Powered System</span>
+      <h1 class="section-title">CUSTOM <span>WORKOUT PLAN</span></h1>
+      <p class="section-subtitle" style="margin:0 auto;">Enter your body metrics and goals. Our system generates a personalized workout plan just for you.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <!-- Calculator Form -->
+      <div class="form-card reveal" id="calcForm">
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:1px;margin-bottom:24px;text-align:center;">Enter Your Details</h3>
+        <form onsubmit="generateWorkoutPlan(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="form-group">
+              <label class="form-label">Body Weight (kg)</label>
+              <input type="number" class="form-input" id="wpWeight" placeholder="e.g., 70" min="30" max="200" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Height (cm)</label>
+              <input type="number" class="form-input" id="wpHeight" placeholder="e.g., 175" min="120" max="220" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Goal</label>
+            <select class="form-select" id="wpGoal" required>
+              <option value="">Select your goal</option>
+              <option value="cut">Cut (Fat Loss & Lean Muscle)</option>
+              <option value="bulk">Bulk (Muscle Gain & Strength)</option>
+              <option value="maintain">Maintain (Stay Fit & Toned)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Experience Level</label>
+            <select class="form-select" id="wpLevel" required>
+              <option value="">Select your level</option>
+              <option value="beginner">Beginner (0-6 months)</option>
+              <option value="intermediate">Intermediate (6-24 months)</option>
+              <option value="advanced">Advanced (2+ years)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:10px;">
+            ⚡ Generate My Workout Plan
+          </button>
+        </form>
+      </div>
+
+      <!-- Results -->
+      <div id="workoutResults" style="display:none;" class="reveal">
+        <div style="text-align:center;margin-bottom:40px;">
+          <h2 class="section-title">YOUR <span>FREE 3-DAY PLAN</span></h2>
+          <p class="section-subtitle" style="margin:0 auto;">Based on your profile, here's a sample of your custom workout. This is what your full plan looks like.</p>
+        </div>
+
+        <!-- BMI Info -->
+        <div id="bmiCard" style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:24px;margin-bottom:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;text-align:center;">
+        </div>
+
+        <div id="freePlan"></div>
+
+        <!-- Upsell -->
+        <div class="plan-upsell" id="upsellSection">
+          <h3>UNLOCK FULL 90-DAY PLAN</h3>
+          <div class="price">৳399</div>
+          <p>Get your complete 3-month personalized workout plan with daily exercise breakdown A–Z. Includes warm-up, main workout, and cooldown for every single day.</p>
+          <button class="btn btn-primary btn-lg" onclick="unlockFullPlan()">🔓 Unlock Full Plan — ৳399</button>
+        </div>
+
+        <!-- Full Plan (hidden) -->
+        <div id="fullPlanContainer" style="display:none;">
+          <div style="text-align:center;margin:40px 0;"><h2 class="section-title">YOUR FULL <span>90-DAY PLAN</span></h2></div>
+          <div id="fullPlan"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="../assets/images/logo.png" alt="Flex Fit Logo" style="width:36px;height:36px;filter:invert(1);">
+            <span>FLEX</span><span class="logo-text-red">FIT</span>
+          </a>
+          <p>The most premium gym experience in Khulna.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="shop.html">Shop</a></li></ul></div>
+        <div><h4>Programs</h4><ul><li><a href="workout-plan.html">Workout Plan</a></li><li><a href="food-plan.html">Food Plan</a></li><li><a href="membership.html">Membership</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Khulna, Bangladesh</li><li>📞 +880 1XXX-XXXXXX</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Flex Fit Gym Khulna. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Exercise DB
+    const exerciseDB = {
+      cut: {
+        push: [
+          {name:'Incline Dumbbell Press', sets:'4×12'},
+          {name:'Flat Barbell Bench Press', sets:'4×10'},
+          {name:'Cable Chest Fly', sets:'3×15'},
+          {name:'Overhead Shoulder Press', sets:'4×10'},
+          {name:'Lateral Raises', sets:'4×15'},
+          {name:'Tricep Rope Pushdown', sets:'3×15'},
+          {name:'Skull Crushers', sets:'3×12'},
+          {name:'Diamond Push-ups', sets:'3×failure'},
+        ],
+        pull: [
+          {name:'Lat Pulldown', sets:'4×12'},
+          {name:'Barbell Rows', sets:'4×10'},
+          {name:'Seated Cable Row', sets:'3×12'},
+          {name:'Face Pulls', sets:'4×15'},
+          {name:'Dumbbell Bicep Curls', sets:'4×12'},
+          {name:'Hammer Curls', sets:'3×12'},
+          {name:'Reverse Fly', sets:'3×15'},
+          {name:'Shrugs', sets:'3×15'},
+        ],
+        legs: [
+          {name:'Barbell Squats', sets:'4×12'},
+          {name:'Romanian Deadlifts', sets:'4×10'},
+          {name:'Leg Press', sets:'3×15'},
+          {name:'Walking Lunges', sets:'3×12/leg'},
+          {name:'Leg Curls', sets:'4×12'},
+          {name:'Leg Extensions', sets:'3×15'},
+          {name:'Calf Raises', sets:'4×20'},
+          {name:'Plank Hold', sets:'3×60sec'},
+        ],
+        cardio: [
+          {name:'Treadmill HIIT (30s sprint / 60s walk)', sets:'20min'},
+          {name:'Jump Rope', sets:'3×3min'},
+          {name:'Battle Ropes', sets:'4×30sec'},
+          {name:'Burpees', sets:'3×15'},
+          {name:'Mountain Climbers', sets:'3×30sec'},
+          {name:'Cycling', sets:'15min'},
+        ],
+        abs: [
+          {name:'Hanging Leg Raises', sets:'3×15'},
+          {name:'Cable Crunches', sets:'3×15'},
+          {name:'Russian Twists', sets:'3×20'},
+          {name:'Bicycle Crunches', sets:'3×20'},
+          {name:'Dead Bug', sets:'3×12'},
+          {name:'Ab Rollouts', sets:'3×10'},
+        ]
+      },
+      bulk: {
+        push: [
+          {name:'Flat Barbell Bench Press', sets:'5×5'},
+          {name:'Incline Dumbbell Press', sets:'4×8'},
+          {name:'Weighted Dips', sets:'4×8'},
+          {name:'Overhead Press (Barbell)', sets:'5×5'},
+          {name:'Dumbbell Lateral Raises', sets:'4×12'},
+          {name:'Close-Grip Bench Press', sets:'4×8'},
+          {name:'Skull Crushers', sets:'3×10'},
+          {name:'Overhead Tricep Extension', sets:'3×12'},
+        ],
+        pull: [
+          {name:'Deadlifts', sets:'5×5'},
+          {name:'Weighted Pull-ups', sets:'4×8'},
+          {name:'Barbell Rows', sets:'5×5'},
+          {name:'T-Bar Rows', sets:'4×8'},
+          {name:'Barbell Curls', sets:'4×10'},
+          {name:'Preacher Curls', sets:'3×10'},
+          {name:'Face Pulls', sets:'3×15'},
+          {name:'Dumbbell Shrugs', sets:'4×12'},
+        ],
+        legs: [
+          {name:'Barbell Back Squats', sets:'5×5'},
+          {name:'Front Squats', sets:'4×8'},
+          {name:'Romanian Deadlifts', sets:'4×8'},
+          {name:'Barbell Hip Thrusts', sets:'4×10'},
+          {name:'Leg Press (Heavy)', sets:'4×10'},
+          {name:'Bulgarian Split Squats', sets:'3×10/leg'},
+          {name:'Standing Calf Raises', sets:'5×15'},
+          {name:'Farmer\'s Walk', sets:'3×40m'},
+        ],
+        cardio: [
+          {name:'Light Walk', sets:'20min'},
+          {name:'Cycling (low intensity)', sets:'15min'},
+          {name:'Swimming', sets:'20min'},
+        ],
+        abs: [
+          {name:'Weighted Planks', sets:'3×45sec'},
+          {name:'Cable Woodchoppers', sets:'3×12'},
+          {name:'Hanging Knee Raises', sets:'3×12'},
+          {name:'Ab Wheel Rollouts', sets:'3×10'},
+        ]
+      },
+      maintain: {
+        push: [
+          {name:'Dumbbell Bench Press', sets:'4×10'},
+          {name:'Incline Cable Fly', sets:'3×12'},
+          {name:'Seated Shoulder Press', sets:'4×10'},
+          {name:'Lateral Raises', sets:'3×15'},
+          {name:'Tricep Pushdowns', sets:'3×12'},
+          {name:'Push-ups', sets:'3×failure'},
+        ],
+        pull: [
+          {name:'Lat Pulldown', sets:'4×10'},
+          {name:'Dumbbell Rows', sets:'4×10'},
+          {name:'Cable Rows', sets:'3×12'},
+          {name:'Bicep Curls', sets:'3×12'},
+          {name:'Face Pulls', sets:'3×15'},
+          {name:'Rear Delt Fly', sets:'3×12'},
+        ],
+        legs: [
+          {name:'Goblet Squats', sets:'4×12'},
+          {name:'Leg Press', sets:'3×12'},
+          {name:'RDL', sets:'3×12'},
+          {name:'Lunges', sets:'3×10/leg'},
+          {name:'Leg Curls', sets:'3×12'},
+          {name:'Calf Raises', sets:'3×15'},
+        ],
+        cardio: [
+          {name:'Moderate Treadmill Walk', sets:'25min'},
+          {name:'Cycling', sets:'20min'},
+          {name:'Jump Rope', sets:'3×3min'},
+        ],
+        abs: [
+          {name:'Planks', sets:'3×45sec'},
+          {name:'Leg Raises', sets:'3×15'},
+          {name:'Crunches', sets:'3×20'},
+        ]
+      }
+    };
+
+    const dayLabels = ['Push Day (Chest/Shoulders/Triceps)', 'Pull Day (Back/Biceps)', 'Leg Day (Quads/Hams/Glutes)'];
+    const dayKeys = ['push', 'pull', 'legs'];
+
+    let userProfile = {};
+
+    function generateWorkoutPlan(e) {
+      e.preventDefault();
+      const weight = parseInt(document.getElementById('wpWeight').value);
+      const height = parseInt(document.getElementById('wpHeight').value);
+      const goal = document.getElementById('wpGoal').value;
+      const level = document.getElementById('wpLevel').value;
+
+      userProfile = { weight, height, goal, level };
+
+      // BMI
+      const bmi = (weight / ((height/100) ** 2)).toFixed(1);
+      let bmiCat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal' : bmi < 30 ? 'Overweight' : 'Obese';
+      let goalLabel = goal === 'cut' ? 'Fat Loss' : goal === 'bulk' ? 'Muscle Gain' : 'Maintenance';
+
+      document.getElementById('bmiCard').innerHTML = `
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--red-accent);">${bmi}</div><div style="color:var(--text-muted);font-size:0.85rem;">BMI (${bmiCat})</div></div>
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--red-accent);">${weight}kg</div><div style="color:var(--text-muted);font-size:0.85rem;">Body Weight</div></div>
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--red-accent);">${height}cm</div><div style="color:var(--text-muted);font-size:0.85rem;">Height</div></div>
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--red-accent);">${goalLabel}</div><div style="color:var(--text-muted);font-size:0.85rem;">Goal</div></div>
+      `;
+
+      // Generate free 3-day plan
+      const plan = exerciseDB[goal];
+      let html = '';
+      for (let i = 0; i < 3; i++) {
+        html += `<div class="plan-result" style="margin-bottom:16px;">
+          <div class="plan-day">
+            <div class="plan-day-title">Day ${i+1} — ${dayLabels[i]}</div>
+            <div style="margin-bottom:8px;color:var(--text-muted);font-size:0.85rem;">Warm-up: 5 min light cardio + dynamic stretching</div>
+            ${plan[dayKeys[i]].map(ex => `
+              <div class="plan-exercise">
+                <span>${ex.name}</span>
+                <span class="sets">${ex.sets}</span>
+              </div>
+            `).join('')}
+            <div style="margin-top:8px;color:var(--text-muted);font-size:0.85rem;">Cooldown: 5 min stretching + foam rolling</div>
+          </div>
+        </div>`;
+      }
+
+      document.getElementById('freePlan').innerHTML = html;
+      document.getElementById('workoutResults').style.display = 'block';
+
+      // Admin check
+      if (isAdmin()) {
+        document.getElementById('upsellSection').style.display = 'none';
+        unlockFullPlan(true);
+      }
+
+      document.getElementById('workoutResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function unlockFullPlan(isAdminUser) {
+      if (!isAdminUser) {
+        showModal('Payment Required', 'This would redirect to bKash/Nagad payment. For demo, your plan is now unlocked!');
+      }
+      document.getElementById('upsellSection').style.display = 'none';
+      document.getElementById('fullPlanContainer').style.display = 'block';
+
+      const plan = exerciseDB[userProfile.goal];
+      const weekPattern = [
+        { label: dayLabels[0], key: 'push' },
+        { label: dayLabels[1], key: 'pull' },
+        { label: dayLabels[2], key: 'legs' },
+        { label: 'Cardio + Abs', key: 'cardio', extra: 'abs' },
+        { label: dayLabels[0] + ' (Variation)', key: 'push' },
+        { label: dayLabels[1] + ' (Variation)', key: 'pull' },
+        { label: 'Rest Day / Active Recovery', key: null },
+      ];
+
+      let html = '';
+      for (let week = 1; week <= 12; week++) {
+        html += `<div style="margin-bottom:24px;">
+          <h3 style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:1px;margin-bottom:16px;padding:12px 20px;background:var(--gradient-red-dark);border-radius:10px;">
+            WEEK ${week} ${week <= 4 ? '— Foundation Phase' : week <= 8 ? '— Growth Phase' : '— Peak Phase'}
+          </h3>`;
+
+        for (let d = 0; d < 7; d++) {
+          const dayNum = (week - 1) * 7 + d + 1;
+          const day = weekPattern[d];
+          html += `<div class="plan-result" style="margin-bottom:8px;">
+            <div class="plan-day">
+              <div class="plan-day-title" style="display:flex;justify-content:space-between;align-items:center;">
+                <span>Day ${dayNum} — ${day.label}</span>
+                <span style="font-size:0.75rem;color:var(--text-muted);">Week ${week}, ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d]}</span>
+              </div>`;
+
+          if (day.key === null) {
+            html += `<div class="plan-exercise"><span>🧘 Light stretching, walking, or yoga. Let your muscles recover.</span><span class="sets">Rest</span></div>`;
+          } else {
+            const exercises = plan[day.key];
+            // Vary exercises slightly based on week phase
+            const phaseMultiplier = week <= 4 ? 1 : week <= 8 ? 1.1 : 1.2;
+            exercises.forEach(ex => {
+              html += `<div class="plan-exercise"><span>${ex.name}</span><span class="sets">${ex.sets}</span></div>`;
+            });
+            if (day.extra && plan[day.extra]) {
+              plan[day.extra].forEach(ex => {
+                html += `<div class="plan-exercise"><span>${ex.name}</span><span class="sets">${ex.sets}</span></div>`;
+              });
+            }
+          }
+          html += `</div></div>`;
+        }
+        html += `</div>`;
+      }
+
+      document.getElementById('fullPlan').innerHTML = html;
+      if (!isAdminUser) {
+        document.getElementById('fullPlanContainer').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
